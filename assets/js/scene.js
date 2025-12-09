@@ -9,15 +9,15 @@ const scene = new THREE.Scene();
 
 // Camera
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
-camera.position.z = 6;
+camera.position.z = 8;
 camera.position.y = 0.5;
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.2;
+renderer.toneMappingExposure = 1.0;
 container.appendChild(renderer.domElement);
 
 // Post-Processing (BLOOM)
@@ -25,52 +25,76 @@ const renderScene = new RenderPass(scene, camera);
 
 const bloomPass = new UnrealBloomPass(
     new THREE.Vector2(window.innerWidth, window.innerHeight),
-    1.5, // Strength (Bloom intensity)
-    0.4, // Radius
-    0.85 // Threshold
+    1.8, // Strength
+    0.6, // Radius
+    0.7  // Threshold
 );
-bloomPass.strength = 1.0;
-bloomPass.radius = 0.5;
-bloomPass.threshold = 0.6; // Only bright things glow
 
 const composer = new EffectComposer(renderer);
 composer.addPass(renderScene);
 composer.addPass(bloomPass);
 
-// Object: The "Neural Core" (Glass Torus Knot)
-const geometry = new THREE.TorusKnotGeometry(1.2, 0.4, 150, 20);
-
-// Physical Material (Glass-like with Neon emission)
-const material = new THREE.MeshPhysicalMaterial({
-    color: 0x222222,       // Dark base
-    roughness: 0.1,        // Very smooth
-    metalness: 0.1,        // Slight metal
-    transmission: 0.2,     // Glass-like (if transmission > 0)
-    thickness: 1.0,
+// Holographic Material
+const holoMaterial = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    metalness: 0.9,
+    roughness: 0.1,
+    transmission: 0.3,
+    thickness: 0.5,
     clearcoat: 1.0,
-    clearcoatRoughness: 0.0,
-    emissive: 0x00f2ff,    // Cyan Glow
-    emissiveIntensity: 0.5 // Base Glow
+    clearcoatRoughness: 0.1,
+    emissive: 0x00f0ff,
+    emissiveIntensity: 0.4
 });
 
-const torus = new THREE.Mesh(geometry, material);
-scene.add(torus);
+// Main Geometry - Icosahedron
+const geometry = new THREE.IcosahedronGeometry(1.5, 1);
+const mesh = new THREE.Mesh(geometry, holoMaterial);
+scene.add(mesh);
 
-// Particles (Starfield)
+// Wireframe Overlay
+const wireframeGeo = new THREE.IcosahedronGeometry(1.52, 1);
+const wireframeMat = new THREE.MeshBasicMaterial({
+    color: 0xff006e,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.3
+});
+const wireframe = new THREE.Mesh(wireframeGeo, wireframeMat);
+scene.add(wireframe);
+
+// Neon Particles
 const particlesGeo = new THREE.BufferGeometry();
-const particlesCount = 1000;
+const particlesCount = 1500;
 const posArray = new Float32Array(particlesCount * 3);
+const colorArray = new Float32Array(particlesCount * 3);
 
-for (let i = 0; i < particlesCount * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 20; // Spread wide
+const neonColors = [
+    new THREE.Color(0x00f0ff), // Cyan
+    new THREE.Color(0xff006e), // Pink
+    new THREE.Color(0xb537f2), // Purple
+    new THREE.Color(0x39ff14)  // Lime
+];
+
+for (let i = 0; i < particlesCount * 3; i += 3) {
+    posArray[i] = (Math.random() - 0.5) * 25;
+    posArray[i + 1] = (Math.random() - 0.5) * 25;
+    posArray[i + 2] = (Math.random() - 0.5) * 25;
+
+    const color = neonColors[Math.floor(Math.random() * neonColors.length)];
+    colorArray[i] = color.r;
+    colorArray[i + 1] = color.g;
+    colorArray[i + 2] = color.b;
 }
 
 particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+particlesGeo.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
 const particlesMat = new THREE.PointsMaterial({
-    size: 0.03,
-    color: 0x7000ff, // Purple stars
+    size: 0.05,
+    vertexColors: true,
     transparent: true,
-    opacity: 0.6,
+    opacity: 0.8,
     blending: THREE.AdditiveBlending
 });
 
@@ -78,19 +102,23 @@ const particles = new THREE.Points(particlesGeo, particlesMat);
 scene.add(particles);
 
 // Lighting
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.05);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
 scene.add(ambientLight);
 
-// Point Lights (Neon colors)
-const light1 = new THREE.PointLight(0x00f2ff, 2, 10);
-light1.position.set(2, 2, 2);
+// Neon Point Lights
+const light1 = new THREE.PointLight(0x00f0ff, 3, 15);
+light1.position.set(3, 3, 3);
 scene.add(light1);
 
-const light2 = new THREE.PointLight(0x7000ff, 2, 10);
-light2.position.set(-2, -2, 2);
+const light2 = new THREE.PointLight(0xff006e, 3, 15);
+light2.position.set(-3, -3, 3);
 scene.add(light2);
 
-// Interaction
+const light3 = new THREE.PointLight(0xb537f2, 2, 12);
+light3.position.set(0, 3, -3);
+scene.add(light3);
+
+// Mouse Interaction
 let mouseX = 0;
 let mouseY = 0;
 let targetX = 0;
@@ -112,26 +140,41 @@ function animate() {
 
     const elapsedTime = clock.getElapsedTime();
 
-    targetX = mouseX * 0.001;
-    targetY = mouseY * 0.001;
+    targetX = mouseX * 0.0008;
+    targetY = mouseY * 0.0008;
 
     // Smooth rotation
-    torus.rotation.y += 0.005;
-    torus.rotation.x += 0.002;
-    torus.rotation.y += 0.05 * (targetX - torus.rotation.y);
-    torus.rotation.x += 0.05 * (targetY - torus.rotation.x);
+    mesh.rotation.y += 0.003;
+    mesh.rotation.x += 0.002;
+    mesh.rotation.y += 0.03 * (targetX - mesh.rotation.y);
+    mesh.rotation.x += 0.03 * (targetY - mesh.rotation.x);
 
-    // Pulsing Glow
-    material.emissiveIntensity = 0.5 + Math.sin(elapsedTime * 2) * 0.3;
+    // Sync wireframe
+    wireframe.rotation.copy(mesh.rotation);
 
-    // Parallax
-    particles.rotation.y = -mouseX * 0.0001;
-    particles.rotation.x = -mouseY * 0.0001;
+    // Color shifting
+    const hue = (Math.sin(elapsedTime * 0.5) + 1) * 0.5;
+    holoMaterial.emissive.setHSL(hue, 1, 0.5);
+
+    // Pulsing glow
+    holoMaterial.emissiveIntensity = 0.4 + Math.sin(elapsedTime * 2) * 0.2;
+
+    // Rotate particles
+    particles.rotation.y = elapsedTime * 0.05;
+    particles.rotation.x = Math.sin(elapsedTime * 0.1) * 0.1;
+
+    // Animate lights
+    light1.position.x = Math.sin(elapsedTime * 0.7) * 4;
+    light1.position.z = Math.cos(elapsedTime * 0.7) * 4;
+
+    light2.position.x = Math.cos(elapsedTime * 0.5) * 4;
+    light2.position.z = Math.sin(elapsedTime * 0.5) * 4;
 
     // Render with Bloom
     composer.render();
 }
 
+// Handle Resize
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
