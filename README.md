@@ -171,6 +171,6 @@ All personal data (name, experience, projects, skills) is in clearly marked sect
 
 ## Contact
 
-- **Email:** shivrajpatarre@gmail.com
+- **Email:** shivrajpatare.work@gmail.com
 - **GitHub:** [github.com/shivrajpatare](https://github.com/shivrajpatare)
 - **LinkedIn:** [linkedin.com/in/shivrajpatare](https://linkedin.com/in/shivrajpatare)
