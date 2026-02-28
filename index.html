@@ -1056,6 +1056,86 @@
             transition: opacity 0.6s ease 0.3s;
         }
 
+        /* ═══════════════════════════════════════════
+           MOBILE RESPONSIVENESS
+        ═══════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 10px;
+            }
+
+            .term-body {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.1rem;
+                margin: 30px 0 15px 0;
+            }
+            h3 {
+                font-size: 1rem;
+                margin: 20px 0 10px 0;
+            }
+
+            .ascii-art {
+                font-size: 0.4rem;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .project-link {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .form-line {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .form-line .prompt {
+                min-width: auto;
+            }
+
+            .links-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .symlink {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .term-modal {
+                width: 95%;
+                max-height: 90vh;
+            }
+
+            .term-modal .modal-body {
+                padding: 15px;
+                font-size: 0.75rem;
+            }
+
+            .cli-input-line {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .cli-input-line input {
+                width: 100%;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             #preloader { display: none !important; }
             .main-hidden { opacity: 1; }
