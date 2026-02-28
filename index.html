@@ -30,24 +30,25 @@
     <style>
         /* ═══════════════════════════════════════════
            DESIGN TOKENS
-           Dracula Theme: Purple, Cyan, Pink, Green
+           Tokyo Night Theme
         ═══════════════════════════════════════════ */
         :root {
-            --bg-base: #282a36;
-            --term-green: #bd93f9;
-            --term-green-dim: rgba(189, 147, 249, 0.2);
-            --term-green-glow: rgba(189, 147, 249, 0.5);
-            --term-dark: #21222c;
-            --term-border: #44475a;
-            --text-muted: #6272a4;
-            --warning: #f1fa8c;
-            --error: #ff5555;
-            --term-blue: #8be9fd;
-            --term-white: #f8f8f2;
-            --term-purple: #bd93f9;
-            --term-pink: #ff79c6;
-            --term-yellow: #f1fa8c;
-            --term-orange: #ffb86c;
+            --bg-base: #1a1b26;
+            --term-green: #bb9af7;
+            --term-green-dim: rgba(187, 154, 247, 0.2);
+            --term-green-glow: rgba(187, 154, 247, 0.5);
+            --term-dark: #16161e;
+            --term-border: #414868;
+            --text-muted: #565f89;
+            --warning: #e0af68;
+            --error: #f7768e;
+            --term-blue: #7aa2f7;
+            --term-white: #c0caf5;
+            --term-purple: #bb9af7;
+            --term-pink: #f7768e;
+            --term-yellow: #e0af68;
+            --term-orange: #ff9e64;
+            --term-cyan: #7dcfff;
         }
 
         /* ═══════════════════════════════════════════
@@ -95,7 +96,7 @@
             height: 3px;
             width: 0%;
             background: linear-gradient(90deg, var(--term-purple), var(--term-blue));
-            box-shadow: 0 0 10px rgba(189, 147, 249, 0.6), 0 0 5px rgba(139, 233, 253, 0.3);
+            box-shadow: 0 0 10px rgba(187, 154, 247, 0.6), 0 0 5px rgba(125, 207, 255, 0.3);
             z-index: 9999;
             transition: width 0.1s linear;
         }
@@ -131,7 +132,7 @@
             left: 0;
             bottom: 0;
             right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(189, 147, 249, 0.02), rgba(0, 0, 255, 0.06));
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(187, 154, 247, 0.02), rgba(0, 0, 255, 0.06));
             z-index: 999;
             background-size: 100% 2px, 3px 100%;
             pointer-events: none;
@@ -212,7 +213,7 @@
             border-bottom-left-radius: 6px;
             border-bottom-right-radius: 6px;
             padding: 30px;
-            box-shadow: 0 0 20px rgba(189, 147, 249, 0.05);
+            box-shadow: 0 0 20px rgba(187, 154, 247, 0.05);
         }
 
         /* ═══════════════════════════════════════════
@@ -246,7 +247,7 @@
             line-height: 1.1;
             white-space: pre;
             color: var(--term-purple);
-            text-shadow: 0 0 5px rgba(189, 147, 249, 0.5);
+            text-shadow: 0 0 5px rgba(187, 154, 247, 0.5);
             overflow-x: auto;
             display: table;
             margin: 20px auto;
@@ -262,7 +263,7 @@
         .typing-container {
             margin: 30px 0;
             border-left: 2px solid var(--term-green);
-            background: rgba(189, 147, 249, 0.05);
+            background: rgba(187, 154, 247, 0.05);
             padding: 15px;
         }
 
@@ -324,7 +325,7 @@
         }
 
         .skill-card {
-            background: rgba(189, 147, 249, 0.02);
+            background: rgba(187, 154, 247, 0.02);
             border: 1px dashed var(--term-green-dim);
             padding: 20px;
             transition: all 0.3s ease;
@@ -334,8 +335,8 @@
         .skill-card:hover {
             border-style: solid;
             border-color: var(--term-green);
-            background: rgba(189, 147, 249, 0.05);
-            box-shadow: 0 0 15px rgba(189, 147, 249, 0.1);
+            background: rgba(187, 154, 247, 0.05);
+            box-shadow: 0 0 15px rgba(187, 154, 247, 0.1);
         }
 
         .skill-card h4 {
@@ -381,7 +382,7 @@
         .skill-badge:hover {
             border-color: var(--term-green);
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(189, 147, 249, 0.2);
+            box-shadow: 0 4px 10px rgba(187, 154, 247, 0.2);
         }
 
         .skill-card-full { grid-column: 1 / -1; }
@@ -404,7 +405,7 @@
         .project-list li:hover {
             border-style: solid;
             border-color: var(--term-green);
-            background: rgba(189, 147, 249, 0.05);
+            background: rgba(187, 154, 247, 0.05);
         }
 
         .project-title {
@@ -455,7 +456,7 @@
         .symlink:hover {
             background: var(--term-blue);
             color: #000;
-            box-shadow: 0 0 15px rgba(139, 233, 253, 0.5);
+            box-shadow: 0 0 15px rgba(125, 207, 255, 0.5);
         }
 
         .symlink:hover::before {
@@ -489,20 +490,20 @@
 
         .project-link:hover {
             border-color: var(--term-green);
-            background: rgba(189, 147, 249, 0.1);
-            box-shadow: 0 0 10px rgba(189, 147, 249, 0.2);
+            background: rgba(187, 154, 247, 0.1);
+            box-shadow: 0 0 10px rgba(187, 154, 247, 0.2);
             transform: translateY(-1px);
         }
 
         .project-link.demo {
-            border-color: rgba(139, 233, 253, 0.3);
+            border-color: rgba(125, 207, 255, 0.3);
             color: var(--term-blue);
         }
 
         .project-link.demo:hover {
             border-color: var(--term-blue);
-            background: rgba(139, 233, 253, 0.1);
-            box-shadow: 0 0 10px rgba(139, 233, 253, 0.2);
+            background: rgba(125, 207, 255, 0.1);
+            box-shadow: 0 0 10px rgba(125, 207, 255, 0.2);
         }
 
         .project-link::before {
@@ -540,7 +541,7 @@
            TERMINAL CONTACT FORM
         ═══════════════════════════════════════════ */
         .terminal-form {
-            background: rgba(189, 147, 249, 0.02);
+            background: rgba(187, 154, 247, 0.02);
             border: 1px solid var(--term-border);
             padding: 20px;
             margin-top: 20px;
@@ -628,7 +629,7 @@
         #form-status.success {
             color: var(--term-green);
             border: 1px solid var(--term-green);
-            background: rgba(189, 147, 249, 0.05);
+            background: rgba(187, 154, 247, 0.05);
         }
 
         #form-status.error {
@@ -775,7 +776,7 @@
             transition: transform 0.3s ease;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 0 40px rgba(189, 147, 249, 0.15), 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 40px rgba(187, 154, 247, 0.15), 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         .term-modal-overlay.active .term-modal {
@@ -836,7 +837,7 @@
         .term-modal .modal-body .out-red { color: var(--error); }
         .term-modal .modal-body .out-white { color: var(--term-white); font-weight: bold; }
         .term-modal .modal-body .out-muted { color: var(--text-muted); }
-        .term-modal .modal-body .out-warn { color: #ffaa00; }
+        .term-modal .modal-body .out-warn { color: var(--term-yellow); }
 
         .term-link {
             color: inherit;
@@ -940,7 +941,7 @@
             font-size: 0.5rem;
             line-height: 1;
             color: var(--term-purple);
-            text-shadow: 0 0 10px rgba(189, 147, 249, 0.5);
+            text-shadow: 0 0 10px rgba(187, 154, 247, 0.5);
             white-space: pre;
             margin-bottom: 30px;
             opacity: 0.9;
@@ -1016,7 +1017,7 @@
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg, var(--term-purple), var(--term-blue));
-            box-shadow: 0 0 10px rgba(189, 147, 249, 0.5), 0 0 5px rgba(139, 233, 253, 0.3);
+            box-shadow: 0 0 10px rgba(187, 154, 247, 0.5), 0 0 5px rgba(125, 207, 255, 0.3);
             transition: width 0.3s ease;
             border-radius: 2px;
         }
@@ -1084,7 +1085,7 @@
         <div class="boot-log" id="bootLog"></div>
         <div class="progress-container">
             <div style="text-align: center; margin-bottom: 15px;">
-                <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&duration=3000&pause=800&color=BD93F9&center=true&vCenter=true&width=500&lines=Initializing+Shivraj+Patare...;AI+%2F+ML+Engineer;Building+Agentic+Systems;Automating+Intelligence;Engineering+Impact" alt="Typing Animation" style="max-width: 100%; height: auto;" />
+                <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&duration=3000&pause=800&color=BB9AF7&center=true&vCenter=true&width=500&lines=Initializing+Shivraj+Patare...;AI+%2F+ML+Engineer;Building+Agentic+Systems;Automating+Intelligence;Engineering+Impact" alt="Typing Animation" style="max-width: 100%; height: auto;" />
             </div>
             <div class="progress-label">
                 <span class="active-msg" id="progressMsg">Booting...</span>
@@ -1156,7 +1157,7 @@
         <div class="section-gap">
             <div class="exp-item">
                 <div class="exp-role">Software Engineer Trainee</div>
-                <div class="exp-company">@ The DataTech Labs Inc, Pune <span class="comment">| Jan 2026 - Jul 2026</span></div>
+                <div class="exp-company">@ The DataTech Labs Inc (TDTL), Pune <span class="comment">| Jan 2026 - Present</span></div>
                 <div class="exp-desc">Working on AI/ML projects with focus on software development, API integration, and production deployment. Maintaining organizational standards, data security, and project timelines in a collaborative team environment.</div>
             </div>
             <div class="exp-item">
@@ -1415,7 +1416,7 @@
     for (var i = 0; i < pCols; i++) pDrops[i] = Math.floor(Math.random() * -50);
 
     var preRainInterval = setInterval(function() {
-        pctx.fillStyle = 'rgba(40, 42, 54, 0.05)';
+        pctx.fillStyle = 'rgba(26, 27, 38, 0.05)';
         pctx.fillRect(0, 0, pc.width, pc.height);
         pctx.fillStyle = '#bd93f9';
         pctx.font = pFontSize + 'px monospace';
@@ -1552,7 +1553,7 @@
     }
 
     function draw() {
-        ctx.fillStyle = 'rgba(40, 42, 54, 0.05)';
+        ctx.fillStyle = 'rgba(26, 27, 38, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         ctx.fillStyle = '#bd93f9';
@@ -1565,7 +1566,7 @@
 
             // Vary brightness for depth
             var alpha = 0.3 + Math.random() * 0.7;
-            ctx.fillStyle = 'rgba(189, 147, 249, ' + alpha + ')';
+            ctx.fillStyle = 'rgba(187, 154, 247, ' + alpha + ')';
             ctx.fillText(char, x, y);
 
             if (y > canvas.height && Math.random() > 0.975) {
@@ -1801,12 +1802,12 @@
                 '<span class="out-white">  ┌─ WORK EXPERIENCE ─────────────────────┐</span>',
                 '',
                 '  <span class="out-green">▸</span> <span class="out-white">AI/ML Engineer Intern</span>',
-                '    <span class="out-muted">Kaizen Analytix | Oct 2025 - Present</span>',
+                '    <span class="out-muted">The DataTech Labs Inc (TDTL) | Jan 2026 - Present</span>',
                 '    Building & deploying intelligent AI solutions',
                 '    using LLMs, RAG pipelines, agentic workflows.',
                 '',
                 '  <span class="out-green">▸</span> <span class="out-white">Associate Process Executive</span>',
-                '    <span class="out-muted">Infosys BPM | Sep 2023 - Sep 2024</span>',
+                '    <span class="out-muted">Datamatics Technology Limited | Dec 2023 - Jul 2024</span>',
                 '    Client queries, issue resolution, enterprise ops.',
                 '',
                 '<span class="out-white">  └───────────────────────────────────────────┘</span>'
@@ -2186,12 +2187,12 @@
             for (var i = 0; i < cols; i++) drops[i] = Math.floor(Math.random() * -20);
 
             var interval = setInterval(function() {
-                ctx.fillStyle = 'rgba(40, 42, 54, 0.05)';
+                ctx.fillStyle = 'rgba(26, 27, 38, 0.05)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 ctx.font = fs + 'px monospace';
                 for (var i = 0; i < drops.length; i++) {
                     var ch = chars[Math.floor(Math.random() * chars.length)];
-                    ctx.fillStyle = 'rgba(189, 147, 249, ' + (0.3 + Math.random() * 0.7) + ')';
+                    ctx.fillStyle = 'rgba(187, 154, 247, ' + (0.3 + Math.random() * 0.7) + ')';
                     ctx.fillText(ch, i * fs, drops[i] * fs);
                     if (drops[i] * fs > canvas.height && Math.random() > 0.95) drops[i] = 0;
                     drops[i]++;
