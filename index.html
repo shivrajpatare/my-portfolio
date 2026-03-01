@@ -1908,13 +1908,12 @@
         projects: function() {
             var card = function(num, name, desc, stack, url) {
                 return [
-                    '<div style="border-left:2px solid var(--term-green);padding:10px 14px;margin:8px 0;background:rgba(187,154,247,0.03);">',
-                    '  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">',
-                    '    <span><span class="out-green">' + num + '.</span> <span class="out-white" style="font-weight:bold;">' + name + '</span> <span style="color:var(--text-muted);">—</span> <span>' + desc + '</span></span>',
+                    '<div style="border-left:2px solid var(--term-green);padding:10px 16px;margin:6px 0;background:rgba(187,154,247,0.03);">',
+                    '  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">',
+                    '    <span><span class="out-green">' + num + '.</span> <span class="out-white" style="font-weight:bold;">' + name + '</span> <span class="out-muted">—</span> <span>' + desc + '</span></span>',
                     '    <a href="' + url + '" target="_blank" class="term-btn-link" style="white-space:nowrap;">\u26a1 ./run --live</a>',
                     '  </div>',
                     '  <div style="margin-top:5px;"><span class="out-muted" style="font-size:0.8em;">' + stack + '</span></div>',
-                    '  <div style="margin-top:4px;"><a href="' + url + '" target="_blank" class="term-link out-blue" style="font-size:0.82em;">\u2192 ' + url + '</a></div>',
                     '</div>'
                 ].join('\n');
             };
