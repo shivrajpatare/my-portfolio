@@ -1907,29 +1907,19 @@
         },
         projects: function() {
             var card = function(num, name, desc, stack, url) {
-                return [
-                    '<div style="border-left:2px solid var(--term-green);padding:10px 16px;margin:6px 0;background:rgba(187,154,247,0.03);">',
-                    '  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">',
-                    '    <span><span class="out-green">' + num + '.</span> <span class="out-white" style="font-weight:bold;">' + name + '</span> <span class="out-muted">—</span> <span>' + desc + '</span></span>',
-                    '    <a href="' + url + '" target="_blank" class="term-btn-link" style="white-space:nowrap;">\u26a1 ./run --live</a>',
-                    '  </div>',
-                    '  <div style="margin-top:5px;"><span class="out-muted" style="font-size:0.8em;">' + stack + '</span></div>',
-                    '</div>'
-                ].join('\n');
+                return '<div style="border-left:2px solid var(--term-green);padding:7px 12px;margin:4px 0;background:rgba(187,154,247,0.03);">' +
+                    '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">' +
+                    '<span><span class="out-green">' + num + '.</span> <span class="out-white" style="font-weight:bold;">' + name + '</span> <span class="out-muted">— ' + desc + '</span></span>' +
+                    '<a href="' + url + '" target="_blank" class="term-btn-link" style="white-space:nowrap;">\u26a1 ./run --live</a>' +
+                    '</div>' +
+                    '<div><span class="out-muted" style="font-size:0.78em;opacity:0.7;">' + stack + '</span></div>' +
+                    '</div>';
             };
             return [
                 '<span class="out-white">  ┌─ DEPLOYED PROJECTS ─────────────────────────┐</span>',
-                '',
-                card('01', 'Aura', 'AI-Powered Civic Issue Intelligence',
-                    'OpenAI Vision · Supabase · Vercel',
-                    'https://aura-ai-one-liard.vercel.app/'),
-                card('02', 'IngreScan-AI', 'Nutrition Intelligence Platform',
-                    'OCR · NLP · LLM reasoning · WHO/FSSAI',
-                    'https://foodriskanaly-yjkguatc.manus.space/'),
-                card('03', 'CareerCrafter', 'Generative AI Career Platform',
-                    'Multi-agent RAG pipelines · REST APIs',
-                    'https://career-crafter-nine.vercel.app/'),
-                '',
+                card('01', 'Aura', 'AI-Powered Civic Issue Intelligence', 'OpenAI Vision · Supabase · Vercel', 'https://aura-ai-one-liard.vercel.app/'),
+                card('02', 'IngreScan-AI', 'Nutrition Intelligence Platform', 'OCR · NLP · LLM reasoning · WHO/FSSAI', 'https://foodriskanaly-yjkguatc.manus.space/'),
+                card('03', 'CareerCrafter', 'Generative AI Career Platform', 'Multi-agent RAG pipelines · REST APIs', 'https://career-crafter-nine.vercel.app/'),
                 '<span class="out-white">  └──────────────────────────────────────────────┘</span>'
             ].join('\n');
         },
