@@ -853,6 +853,42 @@
             text-decoration-color: var(--term-blue);
         }
 
+        /* Terminal-style bordered action buttons (inside modal output) */
+        .term-btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 14px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.78rem;
+            text-decoration: none;
+            border: 1px solid var(--term-green);
+            color: var(--term-green);
+            background: rgba(187, 154, 247, 0.06);
+            transition: all 0.25s ease;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .term-btn-link:hover {
+            background: var(--term-green);
+            color: var(--bg-base);
+            box-shadow: 0 0 12px rgba(187, 154, 247, 0.35);
+        }
+
+        .term-btn-link.term-btn-ghost {
+            border-color: var(--term-border);
+            color: var(--text-muted);
+            background: transparent;
+        }
+
+        .term-btn-link.term-btn-ghost:hover {
+            border-color: var(--term-blue);
+            color: var(--term-blue);
+            background: rgba(122, 162, 247, 0.08);
+            box-shadow: 0 0 10px rgba(122, 162, 247, 0.2);
+        }
+
         .term-modal .modal-input-line {
             display: flex;
             align-items: center;
@@ -1875,15 +1911,27 @@
                 '',
                 '  <span class="out-green">01.</span> <span class="out-white">Aura</span> — AI-Powered Civic Issue Intelligence',
                 '      <span class="out-muted">OpenAI Vision + Supabase + Vercel</span>',
-                '      <span class="out-blue">→ https://aura-ai-one-liard.vercel.app/</span>',
+                '      <a href="https://aura-ai-one-liard.vercel.app/" target="_blank" class="term-link out-blue">→ https://aura-ai-one-liard.vercel.app/</a>',
+                '      <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">'+
+                '        <a href="https://aura-ai-one-liard.vercel.app/" target="_blank" class="term-btn-link">⚡ ./run --live</a>'+
+                '        <a href="https://github.com/shivrajpatare/Aura" target="_blank" class="term-btn-link term-btn-ghost">⎇ git clone ./source</a>'+
+                '      </div>',
                 '',
                 '  <span class="out-green">02.</span> <span class="out-white">IngreScan-AI</span> — Nutrition Intelligence Platform',
                 '      <span class="out-muted">OCR + NLP + LLM reasoning + WHO/FSSAI</span>',
-                '      <span class="out-blue">→ https://foodriskanaly-yjkguatc.manus.space/</span>',
+                '      <a href="https://foodriskanaly-yjkguatc.manus.space/" target="_blank" class="term-link out-blue">→ https://foodriskanaly-yjkguatc.manus.space/</a>',
+                '      <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">'+
+                '        <a href="https://foodriskanaly-yjkguatc.manus.space/" target="_blank" class="term-btn-link">⚡ ./run --live</a>'+
+                '        <a href="https://github.com/shivrajpatare/IngreScan-AI" target="_blank" class="term-btn-link term-btn-ghost">⎇ git clone ./source</a>'+
+                '      </div>',
                 '',
                 '  <span class="out-green">03.</span> <span class="out-white">CareerCrafter</span> — Generative AI Career Platform',
                 '      <span class="out-muted">Multi-agent RAG pipelines + REST APIs</span>',
-                '      <span class="out-blue">→ https://career-crafter-nine.vercel.app/</span>',
+                '      <a href="https://career-crafter-nine.vercel.app/" target="_blank" class="term-link out-blue">→ https://career-crafter-nine.vercel.app/</a>',
+                '      <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">'+
+                '        <a href="https://career-crafter-nine.vercel.app/" target="_blank" class="term-btn-link">⚡ ./run --live</a>'+
+                '        <a href="https://github.com/shivrajpatare/CareerCrafter" target="_blank" class="term-btn-link term-btn-ghost">⎇ git clone ./source</a>'+
+                '      </div>',
                 '',
                 '<span class="out-white">  └───────────────────────────────────────────┘</span>'
             ].join('\n');
