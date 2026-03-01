@@ -1906,31 +1906,32 @@
             ].join('\n');
         },
         projects: function() {
+            var card = function(num, name, desc, stack, url) {
+                return [
+                    '<div style="border-left:2px solid var(--term-green);padding:10px 14px;margin:8px 0;background:rgba(187,154,247,0.03);">',
+                    '  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">',
+                    '    <span><span class="out-green">' + num + '.</span> <span class="out-white" style="font-weight:bold;">' + name + '</span> <span style="color:var(--text-muted);">—</span> <span>' + desc + '</span></span>',
+                    '    <a href="' + url + '" target="_blank" class="term-btn-link" style="white-space:nowrap;">\u26a1 ./run --live</a>',
+                    '  </div>',
+                    '  <div style="margin-top:5px;"><span class="out-muted" style="font-size:0.8em;">' + stack + '</span></div>',
+                    '  <div style="margin-top:4px;"><a href="' + url + '" target="_blank" class="term-link out-blue" style="font-size:0.82em;">\u2192 ' + url + '</a></div>',
+                    '</div>'
+                ].join('\n');
+            };
             return [
-                '<span class="out-white">  ┌─ DEPLOYED PROJECTS ────────────────────┐</span>',
+                '<span class="out-white">  ┌─ DEPLOYED PROJECTS ─────────────────────────┐</span>',
                 '',
-                '  <span class="out-green">01.</span> <span class="out-white">Aura</span> — AI-Powered Civic Issue Intelligence',
-                '      <span class="out-muted">OpenAI Vision + Supabase + Vercel</span>',
-                '      <a href="https://aura-ai-one-liard.vercel.app/" target="_blank" class="term-link out-blue">→ https://aura-ai-one-liard.vercel.app/</a>',
-                '      <div style="display:flex;gap:8px;margin-top:6px;">'+
-                '        <a href="https://aura-ai-one-liard.vercel.app/" target="_blank" class="term-btn-link">⚡ ./run --live</a>'+
-                '      </div>',
+                card('01', 'Aura', 'AI-Powered Civic Issue Intelligence',
+                    'OpenAI Vision · Supabase · Vercel',
+                    'https://aura-ai-one-liard.vercel.app/'),
+                card('02', 'IngreScan-AI', 'Nutrition Intelligence Platform',
+                    'OCR · NLP · LLM reasoning · WHO/FSSAI',
+                    'https://foodriskanaly-yjkguatc.manus.space/'),
+                card('03', 'CareerCrafter', 'Generative AI Career Platform',
+                    'Multi-agent RAG pipelines · REST APIs',
+                    'https://career-crafter-nine.vercel.app/'),
                 '',
-                '  <span class="out-green">02.</span> <span class="out-white">IngreScan-AI</span> — Nutrition Intelligence Platform',
-                '      <span class="out-muted">OCR + NLP + LLM reasoning + WHO/FSSAI</span>',
-                '      <a href="https://foodriskanaly-yjkguatc.manus.space/" target="_blank" class="term-link out-blue">→ https://foodriskanaly-yjkguatc.manus.space/</a>',
-                '      <div style="display:flex;gap:8px;margin-top:6px;">'+
-                '        <a href="https://foodriskanaly-yjkguatc.manus.space/" target="_blank" class="term-btn-link">⚡ ./run --live</a>'+
-                '      </div>',
-                '',
-                '  <span class="out-green">03.</span> <span class="out-white">CareerCrafter</span> — Generative AI Career Platform',
-                '      <span class="out-muted">Multi-agent RAG pipelines + REST APIs</span>',
-                '      <a href="https://career-crafter-nine.vercel.app/" target="_blank" class="term-link out-blue">→ https://career-crafter-nine.vercel.app/</a>',
-                '      <div style="display:flex;gap:8px;margin-top:6px;">'+
-                '        <a href="https://career-crafter-nine.vercel.app/" target="_blank" class="term-btn-link">⚡ ./run --live</a>'+
-                '      </div>',
-                '',
-                '<span class="out-white">  └───────────────────────────────────────────┘</span>'
+                '<span class="out-white">  └──────────────────────────────────────────────┘</span>'
             ].join('\n');
         },
         experience: function() {
